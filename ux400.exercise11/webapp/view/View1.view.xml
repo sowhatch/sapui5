@@ -1,0 +1,41 @@
+<mvc:View controllerName="sync.ux400.exercise11.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Table id="idCarrTable" headerText="Carriers"
+                items="{/CarrierSet}" mode="SingleSelectMaster"
+                selectionChange=".onSelection">
+                <columns>
+                    <Column id="col1"><Label id="label1" text="Id"></Label></Column>
+                    <Column id="col2"><Label id="label2" text="Carrier Name"></Label></Column>
+                    <Column id="col3"><Label id="label3" text="Currency"></Label></Column>
+                    <Column id="col4"><Label id="label4" text="Url"></Label></Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="colListItem1">
+                        <ObjectIdentifier id="objectId1" text="{Carrid}"/>
+                        <Text id="t1" text="{Carrname}"/>
+                        <Text id="t2" text="{Currcode}"/>
+                        <Text id="t3" text="{Url}"/>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+            <Table id="idConnTable" headerText="Flight connections - {Carrid} {Carrname}" items="{toConnection}">
+                <columns>
+                    <Column id="col5"><Label id="label5" text="Connection ID"></Label></Column>
+                    <Column id="col6"><Label id="label6" text="City from"></Label></Column>
+                    <Column id="col7"><Label id="label7" text="City to"></Label></Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="colListItem2">
+                        <ObjectIdentifier id="objectId2" title="{Connid}"/>
+                        <Text id="t4" text="{Cityfrom}"/>
+                        <Text id="t5" text="{Cityto}"/>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

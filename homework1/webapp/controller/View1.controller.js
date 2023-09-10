@@ -21,8 +21,8 @@ sap.ui.define([
                 var oSelectedItem = oEvent.getParameter("listItem");
                 var carrid = oSelectedItem.getBindingContext().getProperty("Carrid");
                 var connid = oSelectedItem.getBindingContext().getProperty("Connid");
-               // MessageToast.show("항공사코드: " + [carrid] + `
-                // 항공편 번호: ` + [connid]);
+                MessageToast.show("항공사코드: " + [carrid] + `
+                 항공편 번호: ` + [connid]);
 
                 //Task 4 선택한 라인의 정보를 가져와 PopUp창을 띄우기
                 var fltime = oSelectedItem.getBindingContext().getProperty("Fltime");

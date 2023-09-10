@@ -1,0 +1,31 @@
+<mvc:View controllerName="ui5.C18.homework1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Table id="idConnTable" headerText="Flights"
+                   items="{/ConnSet}" mode="SingleSelectMaster"
+                   selectionChange=".onSelection">
+
+                <columns>
+                    <Column id="colCarrid"><Label id="lCarrid" text="{i18n>labelCarrid}"></Label></Column>
+                    <Column id="colConnid"><Label id="lConnid" text="{i18n>labelConnid}"></Label></Column>
+                    <Column id="colCounfr"><Label id="lCounfr" text="{i18n>labelCountryfr}"></Label></Column>
+                    <Column id="colCityfr"><Label id="lCityfr" text="{i18n>labelCityfrom}"></Label></Column>
+                    <Column id="colCounto"><Label id="lCounto" text="{i18n>labelCountryto}"></Label></Column>
+                    <Column id="colCityto"><Label id="lCityto" text="{i18n>labelCityto}"></Label></Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="listItem">
+                        <ObjectIdentifier id="objectId" text="{Carrid}"/>
+                        <Text id="tConnid" text="{Connid}"/>
+                        <Text id="tCounfr" text="{Countryfr}"/>
+                        <Text id="tCityfr" text="{Cityfrom}"/> 
+                        <Text id="tCounto" text="{Countryto}"/> 
+                        <Text id="tCityto" text="{Cityto}"/> 
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

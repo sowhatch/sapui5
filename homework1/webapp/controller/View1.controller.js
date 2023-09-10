@@ -1,18 +1,15 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/m/MessageToast",
-    "sap/ui/model/json/JSONModel",
-    "sap/ui/model/type/Time",
-    "../model/formatter"
+    "sap/ui/model/json/JSONModel"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, MessageToast, JSONModel,formatter) {
+    function (Controller, MessageToast, JSONModel) {
         "use strict";
 
         return Controller.extend("ui5.C18.homework1.controller.View1", {
-            formatter: formatter,
             onInit: function () {
             },
 

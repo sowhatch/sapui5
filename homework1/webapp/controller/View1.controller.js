@@ -26,8 +26,8 @@ sap.ui.define([
 
                 //Task 4 선택한 라인의 정보를 가져와 PopUp창을 띄우기
                 var fltime = oSelectedItem.getBindingContext().getProperty("Fltime");
-                var deptime = oSelectedItem.getBindingContext().getProperty("Deptime").ms;
-                var arrtime = oSelectedItem.getBindingContext().getProperty("Arrtime").ms;
+                var deptime = oSelectedItem.getBindingContext().getProperty("Deptime");
+                var arrtime = oSelectedItem.getBindingContext().getProperty("Arrtime");
                 var distance = oSelectedItem.getBindingContext().getProperty("Distance");
                 distance = distance.split('.')[0];
                 var distid = oSelectedItem.getBindingContext().getProperty("Distid");
@@ -70,6 +70,9 @@ sap.ui.define([
             onCloseDialog: function(){
                 //닫기 버튼을 누르면 호출되는 함수로, id값을 통해 dialog를 닫는다.
                 this.byId("infoDialog").close();
+
+                //닫기 버튼을 누른 후 화면을 새로고침해 데이터를 다시 출력한다.
+                history.go(0);
             }
         });
     });

@@ -15,7 +15,6 @@
             <Label id="labelFltime" text="{i18n>labelFltime}"/>
             <Text id="textFltime" text="{/flight/fltime}"/>
             <Label id="labelDeptime" text="{i18n>labelDeptime}"/>
-            <!--edm.time타입의 데이터를 포맷하기 위해 갖가지 수단을 동원했지만 실패했습니다..-->
             <Text id="textDeptime" text="{/flight/deptime}"/>
             <Label id="labelArrtime" text="{i18n>labelArrtime}"/>
             <Text id="textArrtime" text="{/flight/arrtime}"/>

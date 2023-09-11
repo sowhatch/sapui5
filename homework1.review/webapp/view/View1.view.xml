@@ -1,0 +1,40 @@
+<mvc:View controllerName="ui5.c18.homework1.review.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:m="sap.m">
+    <m:Page id="page" title="{i18n>title}">
+        <m:content>
+            <m:Table items="{/ConnSet}" mode="SingleSelectMaster" selectionChange=".onSelectionChange">
+                <m:columns>
+                    <!-- 항공사 -->
+                    <m:Column><m:Label text="{i18n>colTextCarrid}" /></m:Column>
+                    <!-- 항공편 번호 -->
+                    <m:Column><m:Label text="{i18n>colTextConnid}" /></m:Column>
+                    <!-- 출발국가 -->
+                    <m:Column><m:Label text="{i18n>colTextCountryfr}" /></m:Column>
+                    <!-- 출발도시 -->
+                    <m:Column><m:Label text="{i18n>colTextCityfrom}" /></m:Column>
+                    <!-- 도착국가 -->
+                    <m:Column><m:Label text="{i18n>colTextCountryto}" /></m:Column>
+                    <!-- 도착도시 -->
+                    <m:Column><m:Label text="{i18n>colTextCityto}" /></m:Column>
+                </m:columns>
+                <m:items>
+                    <m:ColumnListItem> <!-- /ConnSet의 라인 수 만큼 반복된다.-->
+                        <!-- 항공사 -->
+                        <m:ObjectIdentifier title="{Carrid}"/> 
+                        <!-- 항공편 번호 -->
+                        <m:ObjectIdentifier title="{Connid}"/> 
+                        <!-- 출발국가 -->
+                        <m:Text text="{Countryfr}"/> 
+                        <!-- 출발도시 -->
+                        <m:Text text="{Cityfrom}"/> 
+                        <!-- 도착국가 -->
+                        <m:Text text="{Countryto}"/> 
+                        <!-- 도착도시 -->
+                        <m:Text text="{Cityto}"/> 
+                    </m:ColumnListItem>
+                </m:items>
+            </m:Table>
+        </m:content>
+    </m:Page>
+</mvc:View>

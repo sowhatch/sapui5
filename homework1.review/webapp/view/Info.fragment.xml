@@ -1,0 +1,81 @@
+<core:FragmentDefinition 
+    xmlns:m="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:layout="sap.ui.layout" 
+    >
+
+    <m:Dialog id="idInfoDialog">
+        <m:content>
+            <form:SimpleForm 
+                layout="ResponsiveGridLayout" 
+                labelSpanL="4"
+                labelSpanM="4"
+                labelSpanS="4"
+                
+                >
+                <form:content>
+                    
+                    <!-- 항공사 -->
+                    <m:Label text="{i18n>colTextCarrid}" />
+                    <!-- 화면에 지정된 현재위치의 Carrid로 접근 
+                        View1의 테이블에서 라인을 선택했을 때
+                        해당 경로를 화면의 현재위치로 지정한다. -->
+                    <m:Text  text="{Carrid}" />
+                
+                    <!-- 항공편 번호 -->
+                    <m:Label text="{i18n>colTextConnid}" />
+                    <m:Text  text="{Connid}" />
+                    
+                    <!-- 비행시간 -->
+                    <m:Label text="{i18n>colTextFltime}" />
+                    <m:Text  text="{Fltime}" />
+
+                    <!-- 출발시간 -->
+                    <m:Label text="{i18n>colTextDeptime}" />
+                    <m:Text  text="{
+                        path:  'Deptime',
+                        type:  'sap.ui.model.odata.type.Time',
+                        formatOptions: {
+                            pattern: 'HH:mm:ss'
+                        }
+                    }" />
+
+                    <!-- 도착시간 -->
+                    <m:Label text="{i18n>colTextArrtime}" />
+                    <m:Text  text="{
+                        path:  'Arrtime',
+                        type:  'sap.ui.model.odata.type.Time',
+                        formatOptions: {
+                            pattern: 'HH:mm:ss'
+                        }
+                    }" />
+
+                    <!-- 비행거리 -->
+                    <m:Label text="{i18n>colTextDistance}" />
+                    <!-- <m:Text  text="{abcd>Distance} {abcd>Distid}" /> -->
+                    <!-- <m:Text  text="{abcd>Distid}" /> -->
+                    <m:ObjectNumber 
+                        number="{
+                            parts: [
+                                { path: 'Distance' },
+                                { path: 'Distid' }
+                            ],
+                            type:'sap.ui.model.type.Unit',
+                            formatOptions: {
+                                showMeasure: false
+                            }
+                        }"
+                        unit="{Distid}"
+                    />
+
+
+                </form:content>
+            </form:SimpleForm>
+        </m:content>
+        <m:beginButton>
+            <m:Button text="닫기" press=".onCloseDialog" />
+        </m:beginButton>
+    </m:Dialog>
+    
+</core:FragmentDefinition>

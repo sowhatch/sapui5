@@ -1,0 +1,71 @@
+<mvc:View controllerName="sync.c18.test.crud.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <headerContent>
+            <OverflowToolbar>
+                <Button text="생성" press=".onCreate"/>
+            </OverflowToolbar>
+        </headerContent>
+        <content>
+            <Table items="{/CarrierSet}">
+                <columns>
+                    <Column>
+                        <!--항공사-->
+                        <Label text="{i18n>Carrid}"/>
+                    </Column>
+                    <Column>
+                        <!--항공사명-->
+                        <Label text="{i18n>Carrname}"/>
+                    </Column>
+                    <Column>
+                        <!--통화코드-->
+                        <Label text="{i18n>Currcode}"/>
+                    </Column>
+                    <Column>
+                        <!--웹페이지 주소-->
+                        <Label text="{i18n>Url}"/>
+                    </Column>
+                    <Column>
+                        <!--생성일자-->
+                        <Label text="{i18n>Erdat}"/>
+                    </Column>
+                    <Column>
+                        <!--생성시간-->
+                        <Label text="{i18n>Erzet}"/>
+                    </Column>
+                    <Column>
+                        <!--생성자-->
+                        <Label text="{i18n>Ernam}"/>
+                    </Column>
+                    <Column>
+                        <!--수정일자-->
+                        <Label text="{i18n>Aedat}"/>
+                    </Column>
+                    <Column>
+                        <!--수정시간-->
+                        <Label text="{i18n>Aezet}"/>
+                    </Column>
+                    <Column>
+                        <!--수정자-->
+                        <Label text="{i18n>Aenam}"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <ObjectIdentifier title="{Carrid}"/>
+                        <Text text="{Carrname}"/>
+                        <Text text="{Currcode}"/>
+                        <Text text="{Url}"/>
+                        <Text text="{path: 'Erdat', type:'sap.ui.model.odata.type.Date'}"/>
+                        <Text text="{path: 'Erzet', type:'sap.ui.model.odata.type.Time'}"/>
+                        <Text text="{Ernam}"/>
+                        <Text text="{path: 'Aedat', type:'sap.ui.model.odata.type.Date'}"/>
+                        <Text text="{path: 'Aezet', type:'sap.ui.model.odata.type.Time'}"/>
+                        <Text text="{Aenam}"/>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

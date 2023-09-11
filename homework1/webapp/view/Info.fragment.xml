@@ -1,0 +1,43 @@
+<c:FragmentDefinition
+    id="infoFragment"
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog
+      id="infoDialog"
+      title="{i18n>titleDialog}">
+      <content>
+         <f:SimpleForm id="sForm" layout="ColumnLayout">
+            <Label id="labelCarrid" text="{i18n>labelCarrid}"/>
+            <Text id="textCarrid" text="{/flight/carrid}"/>
+            <Label id="labelConnid" text="{i18n>labelConnid}"/>
+            <Text id="textConnid" text="{/flight/connid}"/>
+            <Label id="labelFltime" text="{i18n>labelFltime}"/>
+            <Text id="textFltime" text="{/flight/fltime}"/>
+            <Label id="labelDeptime" text="{i18n>labelDeptime}"/>
+            <Text id="textDeptime" text="{/flight/deptime}"/>
+            <Label id="labelArrtime" text="{i18n>labelArrtime}"/>
+            <Text id="textArrtime" text="{/flight/arrtime}"/>
+            <Label id="labelDist" text="{i18n>labelDistance}"/>
+            <ObjectNumber
+                    id="distance"
+                     number="{
+                        parts: [{path: '/flight/distance'}, {path: '/flight/distid'}],
+                        type: 'sap.ui.model.type.Unit',
+                        formatOptions: {
+                           showMeasure: false
+                        }
+                     }"
+                     unit="{/flight/distid}"/>
+         </f:SimpleForm>
+      </content>
+
+      <beginButton> <!--dialog 하단 footer에 버튼을 추가하는데 왼쪽에 위치할 버튼-->
+         <Button
+            id="closeButton"
+            text="{i18n>dialogCloseButtonText}"
+            press=".onCloseDialog"/>
+      </beginButton>
+      
+   </Dialog>
+</c:FragmentDefinition>

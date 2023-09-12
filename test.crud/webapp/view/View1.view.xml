@@ -4,11 +4,11 @@
     <Page id="page" title="{i18n>title}">
         <headerContent>
             <OverflowToolbar>
-                <Button text="생성" press=".onCreate"/>
+                <Button text="생성" press=".onCreate" type="Accept" icon="sap-icon://create"/>
             </OverflowToolbar>
         </headerContent>
         <content>
-            <Table items="{/CarrierSet}">
+            <Table id="idTable" items="{/CarrierSet}" mode="MultiSelect">
                 <columns>
                     <Column>
                         <!--항공사-->
@@ -50,6 +50,10 @@
                         <!--수정자-->
                         <Label text="{i18n>Aenam}"/>
                     </Column>
+                    <Column>
+                        <!--수정자-->
+                        <Label text="{i18n>Action}"/>
+                    </Column>
                 </columns>
                 <items>
                     <ColumnListItem>
@@ -63,9 +67,16 @@
                         <Text text="{path: 'Aedat', type:'sap.ui.model.odata.type.Date'}"/>
                         <Text text="{path: 'Aezet', type:'sap.ui.model.odata.type.Time'}"/>
                         <Text text="{Aenam}"/>
+                        <Button icon="sap-icon://edit" press=".onOpenDialogEdit"/>
                     </ColumnListItem>
                 </items>
             </Table>
         </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button text="삭제" press=".onDelete" type="Reject" icon="sap-icon://delete"/>
+            </OverflowToolbar>
+        </footer>
     </Page>
 </mvc:View>

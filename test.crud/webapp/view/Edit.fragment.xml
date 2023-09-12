@@ -4,11 +4,11 @@
     xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form">
     
-    <Dialog id="idNewDialog"
+    <Dialog id="idEditDialog"
             draggable="true"
             icon=""
             resizable="true"
-            title="{i18n>newDialogTitle}"
+            title="{i18n>editDialogTitle}"
     >
         <content>
             <f:SimpleForm 
@@ -17,24 +17,24 @@
 
                 <f:content>
                     <Label text="{i18n>Carrid}"/>
-                    <Input value="{new>/carrier/Carrid}"/>
+                    <Input value="{edit>/carrier/Carrid}" editable="false"/>
 
                     <Label text="{i18n>Carrname}"/>
-                    <Input value="{new>/carrier/Carrname}"/>
+                    <Input value="{edit>/carrier/Carrname}"/>
 
                     <Label text="{i18n>Currcode}"/>
-                    <Input value="{new>/carrier/Currcode}"/>
+                    <Input value="{edit>/carrier/Currcode}"/>
 
                     <Label text="{i18n>Url}"/>
-                    <Input value="{new>/carrier/Url}"/>
+                    <Input value="{edit>/carrier/Url}"/>
                 </f:content>
             </f:SimpleForm>
         </content>
         <beginButton>
-            <Button text="{i18n>buttonSave}" press=".onSave"/>
+            <Button text="{i18n>buttonSave}" press=".onEditComplete"/>
         </beginButton>
         <endButton>
-            <Button text="{i18n>buttonCancel}" press=".onCloseDialog"/>
+            <Button text="{i18n>buttonCancel}" press=".onCloseEditDialog"/>
         </endButton>
     </Dialog>
 

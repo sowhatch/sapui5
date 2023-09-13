@@ -22,18 +22,14 @@
                 <t:noData>
                     <BusyIndicator class="sapUiMediumMargin;" />
                 </t:noData>
-                    <t:toolbar>
-                        <OverflowToolbar >
-                        <Title text="ui table의 제목 {= ${view>/edit} ? '수정모드' : '조회모드'}"  />
-                        <ToolbarSpacer />
-                        <Button 
-                                icon = "sap-icon://refresh"
-                                tooltip = "Reinitialize Model"
-                                press = "onModelRefresh" />
-
+                <OverflowToolbar >
+                    <Title text="ui table의 제목 {= ${view>/edit} ? '수정모드' : '조회모드'}"  />
+                    <ToolbarSpacer />
+                    <Button 
+                        icon = "sap-icon://refresh"
+                        tooltip = "Reinitialize Model"
+                        press = "onModelRefresh" />
                 </OverflowToolbar>
-
-                </t:toolbar>
 
                 <t:columns>
                     <!-- 항공사 -->

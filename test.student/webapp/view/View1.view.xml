@@ -43,7 +43,7 @@
             <!--패널 상단 제목을 나타내기 위한 방법 1)-->
             <!--<Panel headerText="학생 목록" width="100%">-->
             <Panel>
-                <t:Table rows="{/StudentSet}" width="100%" visibleRowCount="5">
+                <t:Table id="idTable" rows="{/StudentSet}" width="100%" visibleRowCount="5">
                     <t:noData>
                         <BusyDialog class="sapUiMediumMargin"/>
                     </t:noData>
@@ -52,6 +52,10 @@
                         <OverflowToolbar>
                             <Title text="학생목록"></Title>
                             <ToolbarSpacer/>
+                            <Button 
+                                icon="sap-icon://delete"
+                                tooltip="Delete Data"
+                                press=".onDelete"/>
                             <Button
                                 icon="sap-icon://refresh"
                                 tooltip="Reinitialize Model"

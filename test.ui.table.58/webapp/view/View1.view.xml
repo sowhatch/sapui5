@@ -22,19 +22,17 @@
                 <t:noData>
                     <BusyIndicator class="sapUiMediumMargin;" />
                 </t:noData>
-                    <t:toolbar>
-                        <OverflowToolbar >
-                        <Title text="ui table의 제목 {= ${view>/edit} ? '수정모드' : '조회모드'}"  />
-                        <ToolbarSpacer />
-                        <Button 
-                                icon = "sap-icon://refresh"
-                                tooltip = "Reinitialize Model"
-                                press = "onModelRefresh" />
-
-                </OverflowToolbar>
-
+                <t:toolbar>
+                    <OverflowToolbar >
+                    <Title text="ui table의 제목 {= ${view>/edit} ? '수정모드' : '조회모드'}"  />
+                    <ToolbarSpacer />
+                    <Button 
+                            icon = "sap-icon://refresh"
+                            tooltip = "Reinitialize Model"
+                            press = "onModelRefresh" />
+                
+                    </OverflowToolbar>
                 </t:toolbar>
-
                 <t:columns>
                     <!-- 항공사 -->
                     <t:Column>
@@ -51,7 +49,7 @@
                         <t:template> <!-- Cardinality(중복도)가 1-->
                             <l:HorizontalLayout>
                                 <Text text="{Carrname}" visible="{= !${view>/edit} }"/>
-                                <Input value="{Carrname}" visible="{view>/edit}"/>
+                                <Input value="{Carrname}" visible="{view>/edit}" maxLength="{/#Carrier/Carrname/@MaxLength}"/>
                             </l:HorizontalLayout>
                         </t:template>
                     </t:Column>
@@ -76,11 +74,11 @@
                             <!-- Link는 조회모드에서 보이지만, 수정모드에서는 안보임 -->
                             <Link text="{Url}" href="{Url}" target="_blank" visible="{=!${view>/edit}}"/>
                             <!-- Input은 조회모드에서는 안보이지만, 수정모드에서는 보임 -->
-                            <Input value="{Url}" visible="{view>/edit}" />
+                            <Input value="{Url}" visible="{view>/edit}"/>
                             </l:HorizontalLayout>
                         </t:template>
                     </t:Column>
-    //
+    
                     <t:Column>
                         <Label text="{i18n>Erdat}" />
                         <t:template>

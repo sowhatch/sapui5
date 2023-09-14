@@ -169,7 +169,7 @@ sap.ui.define([
             )
         },
         onChangeMode: function() {
-            var oModel = this.getView().getModel("view")
+            var oModel = this.getView().getModel("view");
             var oData  = oModel.getData();
             
             if ( oData.edit ) {

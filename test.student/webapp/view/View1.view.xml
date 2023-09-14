@@ -9,9 +9,7 @@
             <Panel expandable="false"> <!--expandable을 true 값으로 주면 접었다 필 수 있음.-->
                 <headerToolbar>
                     <Toolbar>
-                        <Title text="학생 신규 등록" />
-                        <ToolbarSpacer />
-                        <Button text="신규 생성" press=".onCreate" icon="sap-icon://save" type="Accept"/>
+                        <Title text="{= ${view>/edit} ? '학생 정보 수정' : '학생 신규 등록'}" />
                     </Toolbar>
                 </headerToolbar>
                     <content>
@@ -24,17 +22,23 @@
                         labelSpanS="3"
                         >
                         <Label text="학생번호" />
-                        <Input value="{new>/info/Stdno}" />
+                        <Input value="{view>/info/Stdno}" />
 
                         <Label text="이름" />
-                        <Input value="{new>/info/Name}" />
+                        <Input value="{view>/info/Name}" />
 
                         <Label text="성별" />
                         <RadioButtonGroup id="idRBG" columns="2">
                             <RadioButton id="idM" text="남성" />
                             <RadioButton id="idG" text="여성" />
                         </RadioButtonGroup>
-                        <Button text="신규 생성" press=".onCreate" icon="sap-icon://save" type="Accept"/>
+                        <ToolbarSpacer />
+                        <HBox visible="{= !${view>/edit}}">
+                            <Button text="신규 생성" press=".onCreate" icon="sap-icon://save" type="Accept"/>
+                        </HBox>
+                        <HBox visible="{= ${view>/edit}}">
+                             <Button text="수정 완료" press=".onUpdate" icon="sap-icon://save" type="Accept"/>
+                        </HBox>
                     </f:SimpleForm>
                 </content>
             </Panel>
@@ -52,6 +56,10 @@
                         <OverflowToolbar>
                             <Title text="학생목록"></Title>
                             <ToolbarSpacer/>
+                            <Button
+                                icon="sap-icon://edit"
+                                tooltip="Update Data"
+                                press=".onChangeMode" />
                             <Button 
                                 icon="sap-icon://delete"
                                 tooltip="Delete Data"

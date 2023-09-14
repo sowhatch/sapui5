@@ -12,6 +12,7 @@ sap.ui.define([
         return Controller.extend("sync.c18.test.student.controller.View1", {
             onInit: function () {
                 var oData = {
+                    edit: false,
                     info: {
                         Stdno : "",
                         Name : "",
@@ -20,7 +21,7 @@ sap.ui.define([
                 };
                 var oModel = new JSONModel(oData);
                 var oView = this.getView();
-                oView.setModel(oModel, "new");
+                oView.setModel(oModel, "view");
             },
 
             onModelRefresh: function (){
@@ -30,7 +31,7 @@ sap.ui.define([
 
             onCreate: function (){
                 var oView = this.getView();
-                var oNewModel = oView.getModel("new");
+                var oNewModel = oView.getModel("view");
                 var oData = oNewModel.getProperty("/info");
 
                 //성별을 가진 라디오 버튼이 남/여 중 어느것을 선택했는지?
@@ -93,6 +94,84 @@ sap.ui.define([
                     )
                 }
                 
+            },
+            onChangeMode: function(){
+                var oModel = this.getView().getModel("view");
+                var oData = oModel.getData();
+
+                if (oData.edit) { //true : 수정모드
+                    oData.edit = false;     
+                }else{
+                    var oView = this.getView();
+
+                    var oTable = this.byId("idTable");
+                    var aIndex = oTable.getSelectedIndices();
+
+                    if(aIndex.length > 1){
+                        MessageBox.show("하나의 데이터만 선택하세요.");
+                    }else if(aIndex.length === 0){
+                        MessageBox.show("수정할 정보 하나를 선택하세요.");
+                    }
+                    else{
+                        var oContext = oTable.getContextByIndex(aIndex[0]);
+                        var Stdno = oContext.getProperty("Stdno");
+                        var Name = oContext.getProperty("Name");
+                        var Gender = oContext.getProperty("Gender");
+
+                        oData.info.Stdno = Stdno;
+                        oData.info.Name = Name;
+                        oData.info.Gender = Gender;
+
+                        if (Gender === '남'){
+                            oView.byId("idRBG").setSelectedIndex(0);
+                        }else{ //'여'
+                            oView.byId("idRBG").setSelectedIndex(1);
+                        }
+                    }
+
+                    oData.edit = true;
+                    
+                }
+                oModel.setData(oData);
+                this.getView().getModel().resetChanges();
+            },
+
+            onUpdate: function(){
+                var oView = this.getView();
+                var oEditModel = oView.getModel("view");
+                var oData = oEditModel.getProperty("/info");
+                //성별을 가진 라디오 버튼이 남/여 중 어느것을 선택했는지?
+                var index = oView.byId("idRBG").getSelectedIndex();
+                if (index === 0){
+                    //남자를 선택
+                    oData.Gender = '남';
+                }else {
+                    //여자를 선택
+                    oData.Gender = '여';
+                }
+                var oTable = this.byId("idTable");
+                var aIndex = oTable.getSelectedIndex();
+                var oContext = oTable.getContextByIndex(aIndex);
+                var sPath = oContext.getPath();
+
+                var oModel = oView.getModel();
+
+                oModel.update(sPath,{
+                    Stdno : oData.Stdno,
+                    Name : oData.Name,
+                    Gender : oData.Gender
+                },{
+                    success: function (oData, oResponseText){
+                        MessageBox.success("수정완료");
+                    },
+                    error : function (oError){
+                        MessageBox.error("수정실패" + oError.message,{
+                            detail: oError.responseText
+                        });
+                    }
+                });
+                        
             }
+
         });
     });

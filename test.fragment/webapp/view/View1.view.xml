@@ -2,6 +2,35 @@
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
-        <content />
+        <content>
+            <Table
+                id="idTable"
+                items="{/ArticleSet}"
+                mode="SingleSelectMaster"
+                selectionChange=".onSelectionChange"
+                itemPress=".onItemPress">
+
+                <columns>
+                    <Column><Label text="제품코드"/></Column>
+                    <Column><Label text="제품유형"/></Column>
+                    <Column><Label text="제품종류"/></Column>
+                    <Column><Label text="금액"/></Column>
+                    <Column><Label text="사이즈(h*w*d)"/></Column>
+                    <Column><Label text="무게"/></Column>
+                    <Column><Label text="공급업체"/></Column>
+                </columns>
+                <items>
+                    <ColumnListItem type="Active"> <!--itemPress를 사용하기 위해서는 ColumnListItem에 type을 Active로 설정해야 한다-->
+                        <ObjectIdentifier title="{Product}" text="부가설명"/>
+                        <Text text="{Producttype}"/>
+                        <Text text="{Productcategory}"/>
+                        <ObjectNumber number="{Price}" unit="{Currency}"/>
+                        <Text text="{Height} * {Width} * {Depth} (단위: {Dimensionunit})"/>
+                        <ObjectNumber number="{Weight}" unit="{Weightunit}"/>
+                        <Text text="{Supplieruuid}"/>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
     </Page>
 </mvc:View>

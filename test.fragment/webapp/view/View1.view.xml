@@ -5,7 +5,7 @@
         <content>
             <Table
                 id="idTable"
-                items="{/ArticleSet}"
+                items="{path: '/ArticleSet', parameters: {expand:'toSupplier'}}"
                 mode="SingleSelectMaster"
                 selectionChange=".onSelectionChange"
                 itemPress=".onItemPress">

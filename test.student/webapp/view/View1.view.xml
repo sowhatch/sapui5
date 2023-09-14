@@ -1,0 +1,35 @@
+<mvc:View controllerName="sync.c18.test.student.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Panel headerText="학생 신규 등록">
+            <!--데이터 생성을 위한 Panel-->
+                <f:SimpleForm layout="ResponsiveGridLayout"
+                              labelSpanXL="3"
+                              labelSpanL="3"
+                              labelSpanM="3"
+                              labelSpanS="3">
+                    <Label text="학생번호"/>
+                    <Text text="{new>/info/Stdno}"/>
+
+                    <Label text="이름"/>
+                    <Input value="{new>/info/Name}"/>
+
+                    <Label text="성별"/>
+                    <RadioButtonGroup id="idRBG" columns="2">
+                        <RadioButton id="idM" text="남성"/>
+                        <RadioButton id="idG" text="여성"/>
+                    </RadioButtonGroup>
+                </f:SimpleForm>
+                <Button text="신규생성" press=".onCreate"/>
+            </Panel>
+
+            <Panel>
+            <!--생성된 데이터를 리스트업 하기 위한 Panel-->
+
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>

@@ -16,11 +16,11 @@
                 <Text text="{Supplieruuid}"/>
 
                 <Label text="공급처"/>
-                <Text text="{bp>/Businesspartner}({bp>/Companyname})"/>
+                <Text text="{toSupplier/Businesspartner}({toSupplier/Companyname})"/>
 
                 <Label text="연락처"/>
-                <Text text="Phone: {bp>/Phonenumber}"/>
-                <Text text="Fax: {bp>/Faxnumber}"/>
+                <Text text="Phone: {toSupplier/Phonenumber}"/>
+                <Text text="Fax: {toSupplier/Faxnumber}"/>
             </f:SimpleForm>
         </content>
         <beginButton>

@@ -1,0 +1,119 @@
+<mvc:View controllerName="sync.c18.ex4.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table"
+    xmlns:core="sap.ui.core" 
+    xmlns:l="sap.ui.layout">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Panel expandable="false">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="{= ${view>edit} ? '항공편 정보 수정' : '항공편 정보'}"/>
+                    </Toolbar>
+                </headerToolbar>
+                <content>
+                    <t:Table id="idTable" rows="{/ConnectionSet}" width="100%"
+                             selectionMode="MultiToggle" selectionBehavior="Row"
+                             enableBusyIndicator="true">
+                        <t:noData>
+                            <BusyDialog class="sapUiMediumMargin"/>
+                        </t:noData>
+                        <t:columns>
+                            <t:Column
+                                autoResizable="true"
+                                width="10rem">
+                                <Label text="{i18n>carrid}" />
+                                <t:template>
+                                    <ObjectIdentifier text="{Carrid}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column
+                                autoResizable="true"
+                                width="10rem">
+                                <Label text="{i18n>connid}" />
+                                <t:template>
+                                    <ObjectIdentifier text="{Connid}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column
+                                autoResizable="true"
+                                width="15rem">
+                                <Label text="{i18n>from}" />
+                                <t:template>
+                                    <l:HorizontalLayout>
+                                        <Text text="{Cityfrom}({Countryfr})" visible="{= !${view>/edit} }" wrapping="false" />
+                                        <Input value="{Cityfrom}" visible="{= ${view>/edit} }" width="5rem"/>
+                                        <Input value="{Countryfr}" visible="{= ${view>/edit} }" width="5rem"/>
+                                    </l:HorizontalLayout>
+                                </t:template>
+                            </t:Column>
+                            <t:Column
+                                autoResizable="true"
+                                width="15rem">
+                                <Label text="{i18n>to}" />
+                                <t:template>
+                                    <l:HorizontalLayout>
+                                        <Text text="{Cityto}({Countryto})" visible="{= !${view>/edit} }" wrapping="false" />
+                                        <Input value="{Cityto}" visible="{= ${view>/edit} }" width="5rem"/>
+                                        <Input value="{Countryto}" visible="{= ${view>/edit} }" width="5rem"/>
+                                    </l:HorizontalLayout>
+                                </t:template>
+                            </t:Column>
+                            <t:Column
+                                autoResizable="true"
+                                width="13rem">
+                                <Label text="{i18n>fltime}" />
+                                <t:template>
+                                    <l:HorizontalLayout>
+                                        <Text text="{Deptime} ~ {Arrtime}" visible="{= !${view>/edit} }" wrapping="false" />
+                                        <Input value="{Deptime}"  visible="{= ${view>/edit} }" width="5rem"/>
+                                        <Input value="{Arrtime}"  visible="{= ${view>/edit} }" width="5rem"/>
+                                    </l:HorizontalLayout>
+                                </t:template>
+                            </t:Column>
+                            <t:Column
+                                autoResizable="true"
+                                width="12rem">
+                                <Label text="{i18n>distance}" />
+                                <t:template>
+                                        <ObjectNumber
+                                            number="{
+                                                parts: [
+                                                    { path: 'Distance', 
+                                                    type: 'sap.ui.model.type.Integer',
+                                                    formatOptions: {maxFractionDigits: 0}},
+                                                    { path: 'Distid' }
+                                                ],
+                                                type:'sap.ui.model.type.Unit',
+                                                formatOptions: {showMeasure: false}
+                                            }"
+                                            unit="{Distid}"
+                                            />
+
+                                    
+                                        
+                                        <!--<Input value="{Distid}" visible="{=${view>/edit}}" width="3rem"/>-->
+                                    
+                                    
+                                </t:template>
+                            </t:Column>
+                        </t:columns>
+                    </t:Table>
+                </content>
+            </Panel>
+        </content>
+        <Toolbar>
+            <ToolbarSpacer />
+            <HBox visible="{= !${view>/edit} }">
+                <Button text="수정하기" press=".onChangeMode"/>
+            </HBox>
+            <HBox visible="{= ${view>/edit} }">
+                <Button text="수정완료" press=".onUpdate"/>
+                <Button text="취소하기" press=".onChangeMode"/>
+            </HBox>
+        </Toolbar>
+    </Page>
+</mvc:View>
+

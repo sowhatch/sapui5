@@ -38,7 +38,7 @@
                         <Text text="{Planetype}"/>
                         <Text text="{Seatsmax}"/>
                         <Text text="{Seatsocc}"/>
-                        <Text text="{Seatsmax} - {Seatsocc}"/>
+                        <Text text="=${Seatsmax}-${Seatsocc}"/>
                         <ObjectNumber number="{
                                         parts: [
                                                 { path: 'Paymentsum' },

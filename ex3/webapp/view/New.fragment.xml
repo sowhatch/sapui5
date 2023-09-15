@@ -1,0 +1,77 @@
+<c:FragmentDefinition
+    xmlns:c="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout">
+
+    <Dialog id="idNewDialog" 
+            draggable="true"
+            icon="sap-icon://create"
+            title="{i18n>newDialogTitle}">
+        <content>
+            <f:SimpleForm layout="ResponsiveGridLayout"
+                          labelSpanXL="5" 
+                          labelSpanL="5" 
+                          labelSpanM="5" 
+                          labelSpanS="5" 
+                          width="30rem">
+                <f:content>
+                <c:Title text="{i18n>Airline}"/>
+                    <Label text="{i18n>carrid}"/>
+                    <Input value="{view>/flight/Carrid}" width="5rem" class="sapUiSmallMarginBegin"/>
+
+                <Label text="{i18n>connid}"/>
+                <Input value="{view>/flight/Connid}" width="6rem" class="sapUiSmallMarginBegin"/>
+
+                <c:Title text="{i18n>Path}"/>
+                <Label text="{i18n>countryfr}"/>
+                <Input value="{view>/flight/Countryfr}" width="3rem"/>
+                <Label text="{i18n>cityfrom}"/>
+                <Input value="{view>/flight/Cityfrom}" width="10rem"/>
+                <Label text="{i18n>airpfrom}"/>
+                <Input value="{view>/flight/Airpfrom}" width="5rem"/>
+                <Label text="{i18n>countryto}" />
+                <Input value="{view>/flight/Countryto}" width="3rem"/>
+                <Label text="{i18n>cityto}" />
+                <Input value="{view>/flight/Cityto}" width="10rem"/>
+                <Label text="{i18n>airpto}"/>
+                <Input value="{view>/flight/Airpto}" width="5rem"/>
+
+                <c:Title text="{i18n>TimeDistance}"/>
+                <Label text="{i18n>deptime}"/>
+                <!--
+                <TimePicker value="{
+                                path: 'view>/flight/Deptime',
+                                type: 'sap.ui.model.type.String',
+                                formatOptions: {
+                                    pattern: 'HH:mm:ss', 
+                                    support2400: true
+                                }}" width="5rem"/>
+                <Label text="{i18n>arrtime}"/>
+                
+                <TimePicker value="{
+                                path: 'view>/flight/Arrtime',
+                                type: 'sap.ui.model.type.String',
+                                formatOptions: {
+                                    pattern: 'HH:mm:ss'
+                                }}" width="5rsem" /> -->
+                <Input value="{view>/flight/Deptime}" width="5rem"/>
+                <Label text="{i18n>arrtime}"/>
+                <Input value="{view>/flight/Arrtime}" width="5rem"/>
+                    <Label text="{i18n>distance}"/>
+                    <Input value="{view>/flight/Distance}"/>
+                    <ComboBox value="{view>/flight/Distid}" items="{view>/list}" placeholder="거리단위">
+                        <c:Item id="idItem" text="{view>key}" key="{view>key}">
+                        </c:Item>
+                    </ComboBox>
+                    </f:content>
+            </f:SimpleForm>
+        </content>
+        <beginButton>
+            <Button text="저장" press=".onSave"/>
+        </beginButton>
+        <endButton>
+            <Button text="취소" press=".onCloseDialog"/>
+        </endButton>
+    </Dialog>
+</c:FragmentDefinition>

@@ -1,0 +1,90 @@
+<mvc:View controllerName="sync.c18.ex3.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Panel expandable="true">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="{i18n>panelTitle}"/>
+                    </Toolbar>
+                </headerToolbar>
+                <content>
+                    <t:Table id="idTable" rows="{/ConnectionSet}" width="100%">
+                        <t:noData>
+                            <BusyDialog class="sapUiMediumMargin"/>
+                        </t:noData>
+                        <t:columns>
+                            <t:Column
+                                autoResizable="true"
+                                width="10rem">
+                                <Label text="{i18n>carrid}" />
+                                <t:template>
+                                    <ObjectIdentifier text="{Carrid}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column
+                                autoResizable="true"
+                                width="10rem">
+                                <Label text="{i18n>connid}" />
+                                <t:template>
+                                    <ObjectIdentifier text="{Connid}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column
+                                autoResizable="true"
+                                width="15rem">
+                                <Label text="{i18n>from}" />
+                                <t:template>
+                                    <Text text="{Cityfrom}({Countryfr})" wrapping="false" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column
+                                autoResizable="true"
+                                width="15rem">
+                                <Label text="{i18n>to}" />
+                                <t:template>
+                                    <Text text="{Cityto}({Countryto})" wrapping="false" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column
+                                autoResizable="true"
+                                width="13rem">
+                                <Label text="{i18n>fltime}" />
+                                <t:template>
+                                    <Text text="{Deptime} ~ {Arrtime}" wrapping="false" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column
+                                autoResizable="true"
+                                width="12rem">
+                                <Label text="{i18n>distance}" />
+                                <t:template>
+                                    <ObjectNumber
+                                        number="{
+                                            parts: [
+                                                { path: 'Distance', 
+                                                  type: 'sap.ui.model.type.Integer',
+                                                  formatOptions: {maxFractionDigits: 0}},
+                                                { path: 'Distid' }
+                                            ],
+                                            type:'sap.ui.model.type.Unit',
+                                            formatOptions: {showMeasure: false}
+                                        }"
+                                        unit="{Distid}"/>
+                                </t:template>
+                            </t:Column>
+                        </t:columns>
+                    </t:Table>
+                </content>
+            </Panel>
+        </content>
+        <Toolbar>
+            <ToolbarSpacer />
+            <Button text="신규생성" press=".onOpenDialogNew" icon="sap-icon://create" type="Accept"/>
+            <Button text="삭제" press=".onDelete" icon="sap-icon://delete" type="Reject"/>
+        </Toolbar>
+    </Page>
+</mvc:View>

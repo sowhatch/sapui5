@@ -1,0 +1,68 @@
+<c:FragmentDefinition
+    xmlns:c="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout">
+
+    <Dialog id="idDialog" title="{i18n>titleDialog}">
+        <content>
+            <f:SimpleForm
+                layout="ResponsiveGridLayout" 
+                labelSpanL="4"
+                labelSpanM="4"
+                labelSpanS="4">
+                <Label text="{i18n>carrid}"/>
+                <Text text="{toConnection/Carrid}"/>
+
+                <Label text="{i18n>connid}"/>
+                <Text text="{toConnection/Connid}"/>
+
+                <Label text="{i18n>from}"/>
+                <Text text="{toConnection/Airpfrom},{toConnection/Cityfrom},{toConnection/Countryfr}"/>
+
+                <Label text="{i18n>to}"/>
+                <Text text="{toConnection/Airpto},{toConnection/Cityto},{toConnection/Countryto}"/>
+                
+                <Label text="{i18n>fltime}"/>
+                <Text text="{toConnection/Fltime}"/>
+                
+                <Label text="{i18n>deptime}"/>
+                <Text  text="{
+                        path:  'toConnection/Deptime',
+                        type:  'sap.ui.model.odata.type.Time',
+                        formatOptions: {
+                            pattern: 'HH:mm:ss'
+                        }
+                    }"/>
+                
+                <Label text="{i18n>arrtime}"/>
+                <Text  text="{
+                        path:  'toConnection/Arrtime',
+                        type:  'sap.ui.model.odata.type.Time',
+                        formatOptions: {
+                            pattern: 'HH:mm:ss'
+                        }
+                    }"/>
+                <Label text="{i18n>distance}"/>
+                <ObjectNumber
+                    number="{
+                            parts: [
+                                { path: 'toConnection/Distance' },
+                                { path: 'toConnection/Distid' }
+                            ],
+                            type:'sap.ui.model.type.Unit',
+                            formatOptions: {
+                                showMeasure: false
+                            }
+                        }"
+                        unit="{toConnection/Distid}"
+                />
+                <Label text="{i18n>period}"/>
+                <Text text="{toConnection/Period}"/>
+            </f:SimpleForm>
+        </content>
+        <beginButton>
+            <Button text="닫기" press=".onCloseDialog"/>
+        </beginButton>
+    </Dialog>
+</c:FragmentDefinition>

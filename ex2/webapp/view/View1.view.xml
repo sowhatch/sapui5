@@ -1,0 +1,55 @@
+<mvc:View controllerName="sync.c18.ex2.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Table
+                id="idTable"
+                items="{path:'/FlightSet', parameters: {expand: 'toConnection'}}"
+                mode="SingleSelectMaster"
+                itemPress=".onItemPress">
+
+                <columns>
+                    <Column><Label text="{i18n>carrid}"/></Column>
+                    <Column><Label text="{i18n>connid}"/></Column>
+                    <Column><Label text="{i18n>fldate}"/></Column>
+                    <Column><Label text="{i18n>price}"/></Column>
+                    <Column><Label text="{i18n>planetype}"/></Column>
+                    <Column><Label text="{i18n>seatsmax}"/></Column>
+                    <Column><Label text="{i18n>seatsocc}"/></Column>
+                    <Column><Label text="{i18n>seatsfree}"/></Column>
+                    <Column><Label text="{i18n>paymentsum}"/></Column>
+                </columns>
+                <items>
+                    <ColumnListItem type="Active">
+                        <ObjectIdentifier text="{Carrid}"/>
+                        <ObjectIdentifier text="{Connid}"/>
+                        <Text text="{path: 'Fldate',
+                                     type: 'sap.ui.model.odata.type.Date',
+                                     formatOptions: {pattern: 'yyyy-MM-dd'}}"/>
+                        <ObjectNumber number="{
+                                        parts: [
+                                                { path: 'Price' },
+                                                { path: 'Currency' }
+                                             ],
+                                       type:'sap.ui.model.type.Currency',
+                                       formatOptions: {showMeasure: false}}"
+                                      unit="{Currency}"/>
+                        <Text text="{Planetype}"/>
+                        <Text text="{Seatsmax}"/>
+                        <Text text="{Seatsocc}"/>
+                        <Text text="{Seatsmax} - {Seatsocc}"/>
+                        <ObjectNumber number="{
+                                        parts: [
+                                                { path: 'Paymentsum' },
+                                                { path: 'Currency' }
+                                             ],
+                                       type:'sap.ui.model.type.Currency',
+                                       formatOptions: {showMeasure: false}}"
+                                      unit="{Currency}"/>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

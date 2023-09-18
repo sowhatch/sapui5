@@ -1,0 +1,46 @@
+<c:FragmentDefinition
+    xmlns:c="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog id="idDialog"
+            icon="sap-icon://flight"
+            title="{i18n>dialogTitle}">
+        <content>
+            <f:SimpleForm layout="ResponsiveGridLayout">
+                <f:content>
+                    <Label text="{i18n>Carrid}"/>
+                    <Text text="{Carrid}"/>
+
+                    <Label text="{i18n>Connid}"/>
+                    <Text text="{Connid}"/>
+
+                    <Label text="{i18n>Departure}"/>
+                    <Text text="{toConnection/Airpfrom}, {toConnection/Cityfrom}, {toConnection/Countryfr}"/>
+
+                    <Label text="{i18n>Arrival}"/>
+                    <Text text="{conn>/Airpto}, {conn>/Cityto}, {conn>/Countryto}"/>
+
+                    <Label text="{i18n>Fltime}"/>
+                    <Text text="{conn2>/Fltime}"/>
+
+                    <Label text="{i18n>Deptime}"/>
+                    <Text text="{path:'conn2>/Deptime', type:'sap.ui.model.odata.type.Time', formatOptions:{pattern: 'HH:mm:ss'}}"/>
+
+                    <Label text="{i18n>Arrtime}"/>
+                    <Text text="{path:'conn2>/Arrtime', type:'sap.ui.model.odata.type.Time', formatOptions:{pattern: 'HH:mm:ss'}}"/>
+
+                    <Label text="{i18n>Distance}"/>
+                    <ObjectNumber number="{conn2>/Distance}" unit="{conn2>/Distid}"/>
+
+                    <Label text="{i18n>Period}"/>
+                    <Text text="{conn2>/Period}"/>
+
+                </f:content>
+                    
+            </f:SimpleForm>
+        </content>    
+        <beginButton>
+            <Button text="{i18n>closeButton}" press=".onCloseDialog"/>
+        </beginButton>
+    </Dialog>
+</c:FragmentDefinition>

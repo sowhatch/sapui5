@@ -1,0 +1,84 @@
+<mvc:View controllerName="sync.c18.ex3review.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table">
+    <Page id="page" title="{i18n>title}">
+        <content>
+          <Panel headerText="{i18n>panelHeaderText}">
+            <content>
+                <t:Table rows="{/ConnectionSet}">
+                    <t:noData>
+                        <BusyDialog />
+                    </t:noData>
+                    <t:columns>
+                        <t:Column>
+                            <t:label>
+                                <Label text="{i18n>Carrid}"/>
+                            </t:label>
+                            <t:template>
+                                <ObjectIdentifier title="{Carrid}"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column>
+                            <t:label>
+                                <Label text="{i18n>Connid}"/>
+                            </t:label>
+                            <t:template>
+                                <ObjectIdentifier title="{Connid}"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column>
+                            <t:label>
+                                <Label text="{i18n>Cityfrom}"/>
+                            </t:label>
+                            <t:template>
+                                <Text text="{Cityfrom}({Countryfr})"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column>
+                            <t:label>
+                                <Label text="{i18n>Cityto}"/>
+                            </t:label>
+                            <t:template>
+                                <Text text="{Cityto}({Countryto})"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column>
+                            <t:label>
+                                <Label text="{i18n>Fltime}"/>
+                            </t:label>
+                            <t:template>
+                                <Text text="{path:'Deptime', 
+                                             type:'sap.ui.model.odata.type.Time',
+                                             formatOptions:{pattern:'HH:mm:ss'}
+                                            } ~ {Arrtime}"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column>
+                            <t:label>
+                                <Label text="{i18n>Distance}"/>
+                            </t:label>
+                            <t:template>
+                                <ObjectNumber number="{parts:[
+                                                                {path: 'Distance'},
+                                                                {path: 'Distid'}
+                                                             ],
+                                                       type:'sap.ui.model.type.Unit',
+                                                       formatOptions: {showMeasure: false}
+                                                       }" 
+                                              unit="{Distid}"/>
+                            </t:template>
+                        </t:Column>
+                    </t:columns>
+                </t:Table>
+            </content>
+          </Panel>
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button text="{i18n>createButton}" press=".onOpenCreateDialog" icon="sap-icon://create" type="Accept"/>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

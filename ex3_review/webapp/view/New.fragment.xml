@@ -1,0 +1,54 @@
+<c:FragmentDefinition
+    xmlns:c="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog id="idCreateDialog" icon="sap-icon://create" title="{i18n>createDialogTitle}">
+        <content>
+            <f:SimpleForm>
+                <f:content>
+
+                    <c:Title text="{i18n>AirlineInfo}"/>
+                    <Label text="{i18n>Carrid}"/>
+                    <Input value="{new>/Carrid}"/>
+                    <Label text="{i18n>Connid}"/>
+                    <Input value="{new>/Connid}"/>
+
+                    <c:Title text="{i18n>Route}"/>
+                    <Label text="{i18n>Cityfrom}"/>
+                    <Input value="{new>/Cityfrom}"/>
+                    <Label text="{i18n>Countryfr}"/>
+                    <Input value="{new>/Countryfr}"/>
+                    <Label text="{i18n>Airpfrom}"/>
+                    <Input value="{new>/Airpfrom}" required="true"/>
+                    <Label text="{i18n>Cityto}"/>
+                    <Input value="{new>/Cityto}"/>
+                    <Label text="{i18n>Countryto}"/>
+                    <Input value="{new>/Countryto}"/>
+                    <Label text="{i18n>Airpto}"/>
+                    <Input value="{new>/Airpto}" required="true"/>
+
+                    <c:Title text="{i18n>EtcInfo}"/>
+                    <Label text="{i18n>Deptime}"/>
+                    <TimePicker value="{path:'/Deptime', model: 'new', type:'sap.ui.model.odata.Time'}"/>
+                    <Label text="{i18n>Arrtime}"/>
+                    <TimePicker value="{new>/Arrtime}" valueFormat="HH:mm:ss"/>
+
+                    <Label text="{i18n>Distance}"/>
+                    <Input value="{new>/Distance}"/>
+                    <ComboBox items="{new>/DistidList}" value="{new>Distid}">
+                        <items>
+                            <c:Item key="{key}" text="{key}"/>
+                        </items>
+                    </ComboBox>
+
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <beginButton>
+            <Button text="{i18n>createCompleteButton}" press=".onCreateComplete"/>
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>createCancelButton}" press=".onCreateCancel"/>
+        </endButton>
+    </Dialog>
+</c:FragmentDefinition>

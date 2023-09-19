@@ -6,7 +6,7 @@
         <content>
           <Panel headerText="{i18n>panelHeaderText}">
             <content>
-                <t:Table rows="{/ConnectionSet}">
+                <t:Table rows="{/ConnectionSet}" id="idTable">
                     <t:noData>
                         <BusyDialog />
                     </t:noData>
@@ -32,7 +32,18 @@
                                 <Label text="{i18n>Cityfrom}"/>
                             </t:label>
                             <t:template>
-                                <Text text="{Cityfrom}({Countryfr})"/>
+                                <VBox>
+                                    <Text text="{Cityfrom}({Countryfr})" visible="{=!${view>/edit}}"/>
+                                    <Input value="{Cityfrom}" visible="{view>/edit}"/>
+                                </VBox>
+                            </t:template>
+                        </t:Column>
+                        <t:Column visible="{view>/edit}">
+                            <t:label>
+                                <Label text="{i18n>Countryfr}"/>
+                            </t:label>
+                            <t:template>
+                                <Input value="{Countryfr}"/>
                             </t:template>
                         </t:Column>
                         <t:Column>
@@ -77,7 +88,10 @@
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
-                <Button text="{i18n>createButton}" press=".onOpenCreateDialog" icon="sap-icon://create" type="Accept"/>
+                <Button text="{i18n>createButton}" press=".onOpenCreateDialog" icon="sap-icon://create" type="Accept" visible="{=!${view>/edit}}"/>
+                <Button text="{i18n>updateButton}" press=".onChangeMode" icon="sap-icon://edit" type="Accept" visible="{=!${view>/edit}}"/>
+                <Button text="{i18n>saveButton}" press=".onSave" icon="sap-icon://save" type="Accept" visible="{view>/edit}"/>
+                <Button text="{i18n>cancelButton}" press=".onChangeMode" icon="sap-icon://cancel" type="Reject" visible="{view>/edit}"/>
             </OverflowToolbar>
         </footer>
     </Page>

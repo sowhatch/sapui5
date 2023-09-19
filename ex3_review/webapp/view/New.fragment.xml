@@ -4,7 +4,9 @@
     xmlns:f="sap.ui.layout.form">
     <Dialog id="idCreateDialog" icon="sap-icon://create" title="{i18n>createDialogTitle}">
         <content>
-            <f:SimpleForm>
+            <f:SimpleForm width="500px"
+                          layout="ResponsiveGridLayout"
+                          labelSpanS="4">
                 <f:content>
 
                     <c:Title text="{i18n>AirlineInfo}"/>
@@ -29,15 +31,15 @@
 
                     <c:Title text="{i18n>EtcInfo}"/>
                     <Label text="{i18n>Deptime}"/>
-                    <TimePicker value="{path:'/Deptime', model: 'new', type:'sap.ui.model.odata.Time'}"/>
+                    <TimePicker value="{path:'/Deptime', model: 'new', type:'sap.ui.model.odata.type.Time'}"/>
                     <Label text="{i18n>Arrtime}"/>
-                    <TimePicker value="{new>/Arrtime}" valueFormat="HH:mm:ss"/>
+                    <TimePicker value="{new>/Arrtime}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss"/>
 
                     <Label text="{i18n>Distance}"/>
                     <Input value="{new>/Distance}"/>
-                    <ComboBox items="{new>/DistidList}" value="{new>Distid}">
+                    <ComboBox items="{new>/DistidList}" selectedKey="{new>/Distid}">
                         <items>
-                            <c:Item key="{key}" text="{key}"/>
+                            <c:Item key="{new>unit}" text="{new>text}"/>
                         </items>
                     </ComboBox>
 
